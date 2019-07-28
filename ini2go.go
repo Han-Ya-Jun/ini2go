@@ -20,7 +20,7 @@ import (
 * @Function: ini文件自动生成struct
  */
 
-func Ini2Go(iniFileName string, pkgName string, goFileName string, outputPath string) error {
+func Ini2Go(iniFileName string, pkgName string, goFileName string, outputPath string, writeTag bool, tagKeys []string) error {
 	ext := path.Ext(iniFileName)
 	if ext != ".ini" {
 		return errors.New("file format err(must be end with .ini)")
@@ -31,11 +31,11 @@ func Ini2Go(iniFileName string, pkgName string, goFileName string, outputPath st
 		return err
 	}
 	sectionsList := config.Sections()
-	// 以追加模式打开文件，当文件不存在时生成文件
 	_, err = os.Stat(outputPath + goFileName)
 	if err == nil {
 		_ = os.Remove(outputPath + goFileName)
 	}
+	// 以追加模式打开文件，当文件不存在时生成文件
 	outputFile, err := os.OpenFile(outputPath+goFileName, os.O_APPEND|os.O_CREATE, 0666)
 	if err != nil {
 		return err
@@ -74,7 +74,8 @@ func Ini2Go(iniFileName string, pkgName string, goFileName string, outputPath st
 		r := bytes.NewReader(b)
 		var buff bytes.Buffer
 		calvin := json2go.NewTransmogrifier(section.Name(), r, &buff)
-		_ = calvin.SetTagKeys([]string{"db"})
+		_ = calvin.SetTagKeys(tagKeys)
+		calvin.WriteTag = writeTag
 		if index > 1 {
 			calvin.WritePkg = false
 		} else {
