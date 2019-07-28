@@ -12,5 +12,5 @@ import (
  */
 
 func TestIni2Go(t *testing.T) {
-	_ = Ini2Go("example/app.ini", "example", "app.go", "cmd/", false, []string{})
+	_ = Ini2Go("example/app.ini", "example", "app.go", "ini2go/", false, []string{})
 }

@@ -10,7 +10,7 @@ import (
 /*
 * @Author:hanyajun
 * @Date:2019/7/27 23:13
-* @Name:cmd
+* @Name:ini2go
 * @Function:
  */
 // handle flags that are string arrays
