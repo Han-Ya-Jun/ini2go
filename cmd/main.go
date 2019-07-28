@@ -108,12 +108,11 @@ flag              default   description
 -i  -inifile      app.ini   The path of ini file: required.
 -o  -output       .         The Go srouce code output destination.
 -p  -pkg          app       The name of the package.
--g  -gofilename   inifilename     Add import statement for 'encoding/json'.
+-g  -gofilename   inifilename  The name of the go file.
 -h  -help         false     Print the help text; 'help' is also valid.
 -t  -tagkey                 Additional key to be added to struct tags.
                             For multiple keys, use one per key value.
--wp -writepkg     true      Write Pkg
--wt -writetag     true      Write tag
+-wt -writetag     fale      Write tag
 `
 	fmt.Println(helpText)
 }
