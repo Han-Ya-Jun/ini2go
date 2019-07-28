@@ -52,7 +52,7 @@ var (
 func init() {
 	flag.StringVar(&iniFileName, "inifile", "app.ini", "the path of ini file")
 	flag.StringVar(&iniFileName, "i", "", "the short flag for -inifile")
-	flag.StringVar(&outputPath, "output", ".", "the path to the output file")
+	flag.StringVar(&outputPath, "output", "", "the path to the output file")
 	flag.StringVar(&outputPath, "o", "stdin", "the short flag for -input")
 	flag.StringVar(&goFileName, "gofilename", "default:the name of inifile", "path to the output file")
 	flag.StringVar(&goFileName, "g", "default:the name of inifile", "the short flag for -gofilename")
@@ -106,7 +106,7 @@ Options:
 flag              default   description
 ---------------   -------   ------------------------------------------
 -i  -inifile      app.ini   The path of ini file: required.
--o  -output       .         The Go srouce code output destination.
+-o  -output       ini path   The Go srouce code output destination
 -p  -pkg          app       The name of the package.
 -g  -gofilename   inifilename  The name of the go file.
 -h  -help         false     Print the help text; 'help' is also valid.

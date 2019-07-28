@@ -22,6 +22,11 @@ import (
 
 func Ini2Go(iniFileName string, pkgName string, goFileName string, outputPath string, writeTag bool, tagKeys []string) error {
 	ext := path.Ext(iniFileName)
+	if goFileName == "" {
+		filenameWithSuffix := path.Base(iniFileName)
+		fileSuffix := path.Ext(filenameWithSuffix) //获取文件后缀
+		goFileName = strings.TrimSuffix(filenameWithSuffix, fileSuffix)
+	}
 	if ext != ".ini" {
 		return errors.New("file format err(must be end with .ini)")
 	}
