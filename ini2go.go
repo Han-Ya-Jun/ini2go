@@ -71,7 +71,6 @@ func Ini2Go(iniFileName string, pkgName string, goFileName string, outputPath st
 			}
 		}
 		b, _ := json.Marshal(jsonMap)
-		fmt.Println(string(b))
 		r := bytes.NewReader(b)
 		var buff bytes.Buffer
 		calvin := json2go.NewTransmogrifier(section.Name(), r, &buff)
